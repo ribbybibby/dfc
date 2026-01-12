@@ -142,118 +142,1150 @@ images:
 packages:
     alpine: {}
     debian:
+        acpica-tools:
+            - acpica
+        alembic:
+            - jupyter-base-notebook
+        amazon-ecr-credential-helper:
+            - docker-credential-ecr-login
+        anacron:
+            - cronie
+        ansible-core:
+            - py3-ansible-core
+        aom-tools:
+            - aom
+        apparmor-notify:
+            - apparmor-utils
+        arping:
+            - iputils
+        asciidoc-base:
+            - asciidoc
+        augeas-tools:
+            - augeas
+        autopoint:
+            - gettext
+        avahi-autoipd:
+            - avahi
+        avahi-daemon:
+            - avahi
+        avahi-dnsconfd:
+            - avahi
+        avahi-utils:
+            - avahi
         awscli:
             - aws-cli
+        azure-cli:
+            - az
+        bacula-console-qt:
+            - bat
+        bindgen:
+            - rust-bindgen
+        bird2:
+            - bird
+        bird3:
+            - bird
+        bluez-hcidump:
+            - bluez
+        brz:
+            - py3-breezy-bin
         build-essential:
             - build-base
+        cargo:
+            - rust
+        catch2:
+            - Catch2
+        cdrskin:
+            - libburn
+        ceph-base:
+            - ceph
+        ceph-fuse:
+            - ceph
+        ceph-immutable-object-cache:
+            - ceph
+        ceph-mds:
+            - ceph
+        ceph-mgr:
+            - ceph
+        ceph-mon:
+            - ceph
+        ceph-osd:
+            - ceph
+        ceph-volume:
+            - ceph
+        cephadm:
+            - ceph
+        cephfs-mirror:
+            - ceph
+        cephfs-shell:
+            - ceph
+        cephfs-top:
+            - ceph
+        cgroup-tools:
+            - libcgroup
+        charon-cmd:
+            - strongswan
+        clamdscan:
+            - clamav-clamdscan
+        clblast-utils:
+            - clblast
+        clinfo:
+            - opencl
+        cmake-curses-gui:
+            - cmake
+        cmark:
+            - ggshield
+        cmis-client:
+            - libcmis
+        coderay:
+            - ruby3.2-coderay
+        codespell:
+            - py3-codespell-bin
+        coinor-cbc:
+            - cbc
+        coinor-clp:
+            - clp
+        collectd-core:
+            - collectd
+        collectd-utils:
+            - collectd
+        comerr-dev:
+            - e2fsprogs-dev
+        conda-package-handling:
+            - py3-conda-package-handling-bin
+        conserver-client:
+            - minio-object-browser
+        cookiecutter:
+            - py3-cookiecutter-bin
+        cpanminus:
+            - perl-app-cpanminus
+        cups-daemon:
+            - cups
+        cups-ppdc:
+            - cups
+        cxl:
+            - ndctl
+        cython3:
+            - cython-0
+        daxctl:
+            - ndctl
+        dbus-bin:
+            - dbus
+        dbus-daemon:
+            - dbus
+        dbus-tests:
+            - dbus
+        dc:
+            - bc
+        diffoscope-minimal:
+            - py3-diffoscope-bin
+        dirmngr:
+            - gnupg-dirmngr
+        dnsmasq-base:
+            - dnsmasq
+        dnsmasq-base-lua:
+            - dnsmasq
+        docker.io:
+            - docker
+        dotenv-cli:
+            - confluent-docker-utils
+        dub:
+            - confluent-docker-utils
+        eject:
+            - util-linux-misc
+        enchant-2:
+            - enchant2
+        fabric:
+            - az
+        faketime:
+            - libfaketime
+        fdclone:
+            - fd
+        fido2-tools:
+            - fido2
+        filter:
+            - knative-eventing-1.15-filter
+        fish-common:
+            - fish-dev
+        flatbuffers-compiler:
+            - flatbuffers
         fonts-liberation:
             - font-liberation
         fonts-open-sans:
             - font-opensans
+        fonttools:
+            - py3-fonttools-bin
+        freeipa-client:
+            - freeipa
+        freeipa-client-epn:
+            - freeipa
+        freeipa-client-samba:
+            - freeipa
+        freetds-bin:
+            - freetds
+        fstrm-bin:
+            - fstrm-utils
         fuse:
             - fuse2
             - fuse-common
         g++:
             - gcc
+        gcovr:
+            - py3-gcovr-bin
+        gdal-bin:
+            - gdal-tools
+        gdbmtool:
+            - gdbm
+        gdbserver:
+            - gdb
+        generate-ninja:
+            - gn
+        geoip-bin:
+            - geoip
+        geomet:
+            - py3-geomet-bin
+        geotiff-bin:
+            - libgeotiff
         gettext-base:
             - gettext
+        giflib-tools:
+            - giflib-utils
         git-delta:
             - delta
+        git-filter-repo:
+            - py3-git-filter-repo-bin
+        glew-utils:
+            - glew-tools
+        glpk-utils:
+            - glpk
+        glslang-tools:
+            - glslang
+        glslc:
+            - shaderc
+        gnome-panel-control:
+            - openbox
+        gnucobol3:
+            - gnucobol
         gnupg2:
             - gnupg
+        golang-github-cloudflare-circl-dev:
+            - go-1.24-asm
         google-chrome-stable:
             - chromium
+        gpg-wks-client:
+            - gnupg-utils
+        gpgconf:
+            - gnupg-gpgconf
+        gpgme-json:
+            - gpgme
+        gpgrt-tools:
+            - libgpg-error
+        gpsd-tools:
+            - gpsd-clients
+        gsl-bin:
+            - gsl
+        gstreamer1.0-plugins-bad-apps:
+            - gst-plugins-bad
+        gstreamer1.0-plugins-base-apps:
+            - gst-plugins-base
+        gstreamer1.0-tools:
+            - gstreamer
+        gtk-3-examples:
+            - gtk-3
+        gtk-doc-tools:
+            - gtk-doc
+        gunicorn:
+            - py3-gunicorn
+        gyp:
+            - py3-gyp-next-bin
+        hcloud-cli:
+            - hcloud
+        hdf5-helpers:
+            - hdf5-tools
+        heif-thumbnailer:
+            - libheif
+        hello:
+            - hello-wolfi
+        hostname:
+            - net-tools
+        humanfriendly:
+            - az
+        hunspell-tools:
+            - hunspell
+        hwloc-nox:
+            - hwloc
+        ibacm:
+            - rdma-core
+        ibverbs-utils:
+            - rdma-core
+        icu-devtools:
+            - icu
+        idn:
+            - libidn
+        idn2:
+            - idn2-utils
+        ifstat:
+            - iproute2
+        influxdb:
+            - influxd
+        influxdb-client:
+            - influx
+        info:
+            - texinfo
+        ipython3:
+            - jupyter-base-notebook
+        irqtop:
+            - util-linux-misc
+        isal:
+            - isa-l
+        isc-dhcp-client:
+            - dhclient
+        isc-dhcp-client-ddns:
+            - dhclient
+        isc-dhcp-relay:
+            - dhclient
+        isc-dhcp-server-ldap:
+            - dhclient
+        isort:
+            - py3-isort-bin
+        isympy-common:
+            - py3-sympy-bin
+        jupyter-client:
+            - jupyter-base-notebook
+        jupyter-console:
+            - py3-jupyter-console-bin
+        jupyter-core:
+            - jupyter-base-notebook
+        jupyter-nbconvert:
+            - jupyter-base-notebook
+        jupyter-nbformat:
+            - jupyter-base-notebook
+        jupyter-notebook:
+            - kubeflow-pipelines-visualization-server
+        jupyter-server:
+            - jupyter-base-notebook
+        jupyterhub:
+            - jupyter-base-notebook
+        jupyterlab:
+            - jupyter-base-notebook
+        kcapi-tools:
+            - libkcapi-tools
+        kcat:
+            - kafkacat
+        kpartx:
+            - multipath-tools
+        krb5-kdc:
+            - krb5-server
+        krb5-kdc-ldap:
+            - krb5-server
+        krb5-kpropd:
+            - krb5-server
+        lastlog2:
+            - util-linux-misc
+        ldap-utils:
+            - openldap-clients
+        libapr1-dev:
+            - libapr-dev
+        libaprutil1-dev:
+            - apr-util-dev
+        libart-2.0-dev:
+            - libart-lgpl-dev
+        libatasmart-bin:
+            - libatasmart
+        libavif-bin:
+            - libavif-apps
         libbz2-dev:
             - bzip2-dev
         libc-client-dev:
             - glibc-dev
+        libc-dev-bin:
+            - posix-libc-utils
+        libc6:
+            - ld-linux
         libc6-dev:
             - glibc-dev
         libcairo2:
             - cairo
+        libcatch2-dev:
+            - Catch2-2.13-dev
+        libcgal-dev:
+            - cgal
+        libclamav-dev:
+            - clamav-1.0-dev
+        libcli11-dev:
+            - cli11
+        libcollectdclient-dev:
+            - collectd
+        libcollectdclient1t64:
+            - collectd
         libcups2:
             - cups-libs
+        libcups2-dev:
+            - cups-dev
+        libcurl4-gnutls-dev:
+            - curl-dev
         libcurl4-openssl-dev:
             - curl-dev
+        libcxxopts-dev:
+            - cxxopts-dev
+        libdbus-glib-1-dev-bin:
+            - dbus-glib
+        libdc1394-utils:
+            - libdc1394
+        libdeflate-tools:
+            - libdeflate
+        libdevel-checklib-perl:
+            - perl-devel-checklib
+        libdevel-cover-perl:
+            - perl-devel-cover
+        libdieharder3t64:
+            - dieharder
+        libdigest-sha-perl:
+            - perl-utils
+        libdrm-tests:
+            - libdrm
+        libeconf-utils:
+            - libeconf
+        libecpg-dev:
+            - libecpg-13-dev
+        libeigen3-dev:
+            - eigen-dev
+        libfribidi-bin:
+            - fribidi
+        libgcrypt-bin:
+            - libgcrypt
+        libgdal-dev:
+            - gdal-3.8-py3-dev
+        libgdk-pixbuf2.0-bin:
+            - gdk-pixbuf
+        libgeos-dev:
+            - geos-3.11-dev
+        libgio-2.0-dev-bin:
+            - glib-dev
+        libgpgme-dev:
+            - gpgme
+        libgraphicsmagick1-dev:
+            - graphicsmagick-dev
+        libgsl-dev:
+            - gsl-dev
+        libgsm-tools:
+            - gsm-tools
         libgssapi-krb5-2:
             - krb5-libs
+        libgtk-3-bin:
+            - gtk-3
+        libgtk-4-bin:
+            - gtk-4
+        libharfbuzz-bin:
+            - harfbuzz-utils
+        libheif-examples:
+            - libheif
         libicu-dev:
             - icu-dev
+        libimage-exiftool-perl:
+            - exiftool
+        libimlib2-dev:
+            - imlib2
+        libinput-tools:
+            - libinput
+        libjemalloc-dev:
+            - jemalloc
+        libjson-pp-perl:
+            - perl-utils
+        libjson-xs-perl:
+            - perl-json-xs
+        libkmod-dev:
+            - kmod-dev
         libkrb5-dev:
             - krb5-dev
+        liblttng-ust-dev:
+            - lttng-ust-tools
         liblzma-dev:
             - xz-dev
         libmagic1:
             - libmagic
             - libmagic-dev
+        libmemory-usage-perl:
+            - perl-memory-usage
+        libmodule-build-perl:
+            - perl-module-build
+        libmodule-corelist-perl:
+            - perl-utils
+        libmodule-cpanfile-perl:
+            - perl-module-cpanfile
         libncurses5-dev:
             - ncurses
         libncursesw5-dev:
             - ncurses-dev
+        libnet-snmp-perl:
+            - perl-net-snmp
+        libnet1-dev:
+            - libnet-dev
+        libnl-utils:
+            - libnl3-cli
+        libnotify-bin:
+            - libnotify
+        libnss-db:
+            - nss-db
+        libopenjp2-tools:
+            - openjpeg-tools
+        libpam-google-authenticator:
+            - google-authenticator
+        libpam-modules-bin:
+            - linux-pam
+        libparse-yapp-perl:
+            - perl-parse-yapp
+        libpcap0.8-dev:
+            - libpcap-dev
+        libpcre2-dev:
+            - pcre2-dev
+        libpcsclite-dev:
+            - pcsc-lite
+        libpmix-bin:
+            - openpmix
+        libpng-tools:
+            - libpng-utils
+        libpod-parser-perl:
+            - perl-pod-parser
         libpq-dev:
-            - postgresql-dev
+            - postgresql-12-dev
         libpq5:
             - libpq
+        libproxy-tools:
+            - neon
+        libpwquality-tools:
+            - libpwquality
+        libqcow-utils:
+            - libqcow
+        librados-dev:
+            - ceph-18-dev
         librdkafka1:
             - librdkafka
         libreadline-dev:
             - readline
+        libreswan:
+            - strongswan
+        librsvg2-bin:
+            - rsvg-convert
+        libsdl2-compat-dev:
+            - libsdl2-dev
+        libsecret-tools:
+            - libsecret
+        libsparsehash-dev:
+            - sparsehash-dev
+        libspf2-2t64:
+            - libspf2
         libsqlite3-dev:
             - sqlite-libs
         libssl-dev:
             - libssl3
+        libstring-shellquote-perl:
+            - perl-string-shellquote
+        libtasn1-bin:
+            - libtasn1-progs
+        libtelnet-utils:
+            - libtelnet
+        libtemplate-perl:
+            - perl-template-toolkit
+        libtest-harness-perl:
+            - perl-utils
+        libtiff-tools:
+            - tiff
+        libtool-bin:
+            - libtool
+        libvips-tools:
+            - libvips
         libvshadow-utils:
             - shadow
+        libvterm-bin:
+            - libvterm
+        libwayland-bin:
+            - wayland-dev
+        libwww-perl:
+            - perl-libwww
         libxi6:
             - libxi
+        libxkbcommon-tools:
+            - libxkbcommon
         libxmlsec1:
             - xmlsec
         libxmlsec1-dev:
             - xmlsec-dev
         libxmlsec1-openssl:
             - xmlsec-openssl
+        libxslt1-dev:
+            - libxslt-dev
+        libyang3-tools:
+            - libyang
+        linux-perf:
+            - perf
+        litecli:
+            - py3-pgspecial
+        lmdb-utils:
+            - lmdb-tools
         locales:
             - glibc-locales
+        logsave:
+            - e2fsprogs-extra
+        lsb-release:
+            - lsb-release-minimal
+        memdump:
+            - libmemcached
+        memstat:
+            - libmemcached
+        mercurial-common:
+            - mercurial
+        merge3:
+            - py3-merge3-bin
+        mesa-vulkan-drivers:
+            - mesa
+        mmdb-bin:
+            - libmaxminddb
+        msmtp-mta:
+            - msmtp
+        mtdev-tools:
+            - mtdev
+        mtr-tiny:
+            - mtr
+        ncat:
+            - nmap
+        ncurses-bin:
+            - ncurses
         netbase:
             - wolfi-baselayout
         netcat-traditional:
             - netcat-openbsd
+        nettle-bin:
+            - nettle-utils
+        newrole:
+            - policycoreutils
+        nfs-ganesha-rados-grace:
+            - nfs-ganesha
+        nghttp2-client:
+            - nghttp2
+        nghttp2-proxy:
+            - nghttp2
+        nghttp2-server:
+            - nghttp2
+        nginx:
+            - nginx-mainline
+        nlohmann-json3-dev:
+            - nlohmann-json
+        nodeenv:
+            - py3-nodeenv-bin
+        nodejs:
+            - nodejs-16
+        ntpd-rs-metrics:
+            - ntpd-rs
+        oathtool:
+            - oath-toolkit
+        ocaml-base:
+            - ocaml
+        ocaml-interp:
+            - ocaml
+        odbcinst:
+            - unixodbc
+        onnxruntime-tools:
+            - py3-onnxruntime
+        opam-installer:
+            - opam
+        openbox-gnome-session:
+            - openbox
+        openbox-kde-session:
+            - openbox
+        opencl-c-headers:
+            - opencl-dev
+        opencl-clhpp-headers:
+            - opencl-dev
+        openjph-tools:
+            - openjph
+        openscap-scanner:
+            - openscap
+        openscap-utils:
+            - openscap
+        oping:
+            - liboping
+        ow-shell:
+            - owfs
+        ow-tools:
+            - owfs
+        owftpd:
+            - owfs
+        owhttpd:
+            - owfs
+        owserver:
+            - owfs
+        packagekit-tools:
+            - packagekit
+        pango1.0-tools:
+            - pango-tools
         pcre2-utils:
             - pcre2
+        pcscd:
+            - pcsc-lite
+        pdns-backend-ldap:
+            - pdns-5.0-backend-ldap
+        pdns-recursor:
+            - pdns-5.0-recursor
+        pdns-server:
+            - pdns-5.0-nosodium
+        pdns-tools:
+            - pdns-5.0-nosodium
+        perl-base:
+            - perl
+        perltidy:
+            - perl-tidy
+        pgcli:
+            - py3-pgcli-bin
+        pinentry-curses:
+            - pinentry
+        pipenv:
+            - py3-pipenv-bin
+        pkexec:
+            - polkit
         pkg-config:
             - pkgconf
+        pkgconf-bin:
+            - pkgconf
+        podman-docker:
+            - docker-cli
+        podman-remote:
+            - podman
+        polkitd:
+            - polkit
         postgresql-client-14:
             - postgresql-14-client
         postgresql-contrib:
             - postgresql-14-contrib
+        pre-commit:
+            - py3-pre-commit-bin
+        proj-bin:
+            - proj-util
         protobuf-compiler:
             - protobuf-c-compiler
+        protoc-gen-go-1-3:
+            - protoc-gen-go
+        protoc-gen-go-1-5:
+            - protoc-gen-go
+        pry:
+            - ruby3.2-pry
+        pskctool:
+            - oath-toolkit
+        psl:
+            - libpsl-utils
+        psl-make-dafsa:
+            - libpsl-utils
+        pterm:
+            - prrte
+        pybind11-dev:
+            - py3-pybind11
+        pytest-benchmark:
+            - reflex
+        python-rdflib-tools:
+            - py3-rdflib-bin
+        python-wheel-common:
+            - kubeflow-pipelines-visualization-server
         python3:
             - python-3
-        python3-pip:
-            - py3-pip
-        python3-virtualenv:
-            - py3-virtualenv
-        python3-wheel:
-            - py3-wheel
+        python3-ansible-runner:
+            - py3-ansible-runner
+        python3-antlr4:
+            - az
+        python3-argcomplete:
+            - az
+        python3-argparse-manpage:
+            - py3-argcomplete-manpage-bin
+        python3-avro:
+            - py3-avro-python3-bin
+        python3-build:
+            - py3-build-bin
+        python3-cairo-dev:
+            - py3-cairo
+        python3-cbor2:
+            - py3-cbor2-bin
+        python3-certipy:
+            - jupyter-base-notebook
+        python3-chardet:
+            - az
+        python3-charset-normalizer:
+            - az
+        python3-cheroot:
+            - py3-cheroot-bin
+        python3-dask:
+            - py3-dask-bin
+        python3-debugpy:
+            - jupyter-base-notebook
+        python3-distributed:
+            - py3-distributed-bin
+        python3-dulwich:
+            - py3-dulwich-bin
+        python3-dunamai:
+            - py3-dunamai-bin
+        python3-fastapi:
+            - reflex
+        python3-findpython:
+            - py3-findpython-bin
+        python3-flask:
+            - kubeflow-jupyter-web-app
+        python3-google-auth-oauthlib:
+            - kubeflow-pipelines-visualization-server
+        python3-hatch-fancy-pypi-readme:
+            - py3-hatch-fancy-pypi-readme-bin
+        python3-hatch-jupyter-builder:
+            - py3-hatch-jupyter-builder-bin
+        python3-hatchling:
+            - py3-hatchling-bin
+        python3-httpx:
+            - jupyter-base-notebook
+        python3-identify:
+            - py3-identify-bin
+        python3-invoke:
+            - az
+        python3-json-pointer:
+            - jupyter-base-notebook
+        python3-json5:
+            - jupyter-base-notebook
+        python3-jsonschema:
+            - confluent-docker-utils
+        python3-jupyter-events:
+            - jupyter-base-notebook
+        python3-keyring:
+            - kubeflow-pipelines-visualization-server
+        python3-lesscpy:
+            - py3-lesscpy-bin
+        python3-lib389:
+            - py3-lib389-bin
+        python3-mako:
+            - jupyter-base-notebook
+        python3-markdown:
+            - kubeflow-pipelines-visualization-server
+        python3-markdown-it:
+            - kubeflow-pipelines-visualization-server
+        python3-maturin:
+            - maturin
+        python3-nbclassic:
+            - jupyter-base-notebook
+        python3-nbclient:
+            - jupyter-base-notebook
+        python3-netaddr:
+            - py3-netaddr
+        python3-nltk:
+            - kubeflow-pipelines-visualization-server
+        python3-onnx:
+            - py3-onnx-bin
+        python3-openai:
+            - py3-openai-bin
         python3-openssl:
             - py3-pyopenssl
+        python3-optuna:
+            - py3-optuna-bin
+        python3-patiencediff:
+            - py3-patiencediff-bin
+        python3-pbr:
+            - py3-pbr-bin
+        python3-pbs-installer:
+            - py3-pbs_installer-bin
+        python3-pecan:
+            - py3-pecan-bin
+        python3-petl:
+            - py3-petl-bin
+        python3-pip:
+            - py3-pip
+        python3-pipdeptree:
+            - reflex
+        python3-pkginfo:
+            - az
+        python3-poetry:
+            - py3-poetry-bin
+        python3-poetry-dynamic-versioning:
+            - py3-poetry-dynamic-versioning-bin
+        python3-pulp:
+            - py3-pulp-bin
+        python3-pybind11:
+            - py3-pybind11-bin
+        python3-pygments:
+            - az
+        python3-pylatexenc:
+            - py3-pylatexenc-bin
+        python3-pysyncobj:
+            - patroni
+        python3-pytest:
+            - py3-pytest-bin
+        python3-pythran:
+            - py3-pythran-bin
+        python3-q-text-as-data:
+            - q
+        python3-reno:
+            - py3-reno-bin
+        python3-semver:
+            - az
+        python3-send2trash:
+            - jupyter-base-notebook
+        python3-serial:
+            - py3-pyserial-bin
+        python3-smartypants:
+            - smartypants
+        python3-sphinx:
+            - py3-sphinx
+        python3-sshtunnel:
+            - az
+        python3-static3:
+            - cni-plugins
+        python3-tabulate:
+            - az
+        python3-tqdm:
+            - kubeflow-pipelines-visualization-server
+        python3-trove-classifiers:
+            - py3-trove-classifiers
+        python3-ufo-tofu:
+            - opentofu
+        python3-versioneer:
+            - py3-versioneer-bin
+        python3-virt-firmware:
+            - py3-virt-firmware-bin
+        python3-virtualenv:
+            - py3-virtualenv-bin
+        python3-watchdog:
+            - py3-watchdog-bin
+        python3-watchfiles:
+            - py3-watchfiles-bin
+        python3-websocket:
+            - az
+        python3-websockets:
+            - kubeflow-pipelines-visualization-server
+        python3-websockify:
+            - py3-websockify-bin
+        python3-wheel:
+            - py3-wheel
+        python3-yamale:
+            - py3-yamale-bin
+        python3.13-minimal:
+            - python-3.13-base
+        python3.13-nopie:
+            - python-3.13-base
+        qhull-bin:
+            - qhull
+        radosgw:
+            - ceph
+        rake-compiler:
+            - ruby3.4-rake-compiler
+        rbd-fuse:
+            - ceph
+        rbd-mirror:
+            - ceph
+        rbd-nbd:
+            - ceph
+        rblcheck:
+            - udns
+        rdmacm-utils:
+            - rdma-core
+        recommonmark-scripts:
+            - py3-recommonmark-bin
+        rfkill:
+            - util-linux-misc
+        rrdcached:
+            - rrdtool-cached
+        rtr-tools:
+            - rtrlib
+        ruby-bundler:
+            - ruby3.0-bundler
+        ruby-elasticsearch:
+            - ruby3.2-elasticsearch
+        ruby-httpclient:
+            - ruby3.2-faraday-1.10.3
+        ruby-jar-dependencies:
+            - ruby3.2-jar-dependencies
+        ruby-jsonpath:
+            - ruby3.2-jsonpath
+        ruby-rest-client:
+            - ruby3.2-rest-client
+        ruby-reverse-markdown:
+            - ruby3.4-reverse_markdown
+        ruby-rspec-core:
+            - ruby3.4-rspec-core
+        rust-coreutils:
+            - coreutils
+        rust-gdb:
+            - rust
+        rust-lldb:
+            - rust
         s3fs:
             - s3fs-fuse
+        sbc-tools:
+            - sbc-utils
+        scdaemon:
+            - gnupg-utils
+        seccomp:
+            - libseccomp
+        selinux-utils:
+            - libselinux
+        sentencepiece:
+            - py3-sentencepiece
+        sepol-utils:
+            - libsepol
+        service-wrapper:
+            - emissary
+        simple-revision-control:
+            - src
+        slsh:
+            - s-lang
+        slugify:
+            - py3-python-slugify-bin
+        sndfile-programs:
+            - libsndfile
+        sndio-tools:
+            - sndio
+        sndiod:
+            - sndio
+        software-properties-common: []
+        sqlformat:
+            - kubeflow-pipelines-visualization-server
+        sqlite-utils:
+            - py3-sqlite-utils-bin
+        sqlite3:
+            - sqlite
+        squidclient:
+            - squid
+        srptools:
+            - rdma-core
+        srt-tools:
+            - libsrt
+        ss-dev:
+            - e2fsprogs-dev
         ssh:
             - openssh-client
             - openssh-server
-        software-properties-common: []
+        sssd-common:
+            - sssd
+        sssd-tools:
+            - sssd
+        strongswan-pki:
+            - strongswan
+        strongswan-starter:
+            - strongswan
+        strongswan-swanctl:
+            - strongswan
+        sudo-ldap:
+            - sudo
+        syslog-ng-core:
+            - syslog-ng
+        syslog-ng-mod-slog:
+            - syslog-ng
+        systemctl:
+            - systemd
+        systemd-boot-tools:
+            - systemd
+        systemd-coredump:
+            - systemd
+        systemd-cron:
+            - cronie
+        systemd-cryptsetup:
+            - systemd
+        systemd-oomd:
+            - systemd
+        systemd-repart:
+            - systemd
+        systemd-resolved:
+            - systemd
+        systemd-standalone-sysusers:
+            - systemd
+        systemd-standalone-tmpfiles:
+            - systemd
+        systemd-userdbd:
+            - systemd
+        systemtap-runtime:
+            - systemtap
+        systemtap-sdt-dev:
+            - systemtap
+        systemtap-server:
+            - systemtap
+        taskwarrior:
+            - task
+        tcl9.0:
+            - tcl
+        tesseract-ocr:
+            - tesseract
+        thrift-compiler:
+            - thrift
+        tinyproxy-bin:
+            - tinyproxy
+        tk9.0:
+            - tk
+        tkmib:
+            - net-snmp-gui
+        treetop:
+            - ruby3.2-treetop
+        twine:
+            - reflex
+        typer:
+            - py3-typer
+        udns-utils:
+            - udns
+        udunits-bin:
+            - udunits
+        ulid-cli:
+            - py3-python-ulid-bin
+        unbound-anchor:
+            - unbound
+        unbound-host:
+            - unbound
+        unscd:
+            - nscd
+        userpath:
+            - py3-userpath-bin
+        util-linux-extra:
+            - util-linux-misc
         uuid-runtime:
             - util-linux-misc
+        uvicorn:
+            - py3-uvicorn-bin
+        valac-bin:
+            - vala
+        valadoc:
+            - vala
+        vt:
+            - vt-cli
+        waagent:
+            - walinuxagent
         watch:
             - procps
+        webhook:
+            - cert-manager-1.12-webhook
+        whiptail:
+            - newt
+        x11proto-dev:
+            - xorgproto
+        xattr:
+            - py3-xattr-bin
+        xcvt:
+            - libxcvt
         xfonts-utils:
             - font-util
             - mkfontscale
             - bdftopcf
+        xkb-data:
+            - xkeyboard-config-dev
+        xmlsec1:
+            - xmlsec
+        xorriso-dd-target:
+            - xorriso
+        xsltproc:
+            - libxslt
+        xtrace:
+            - glibc-tracing
+        xtrans-dev:
+            - xtrans
         xz-utils:
             - xz
+        xzdec:
+            - xz
+        zbarcam-gtk:
+            - zbar-tools
+        zipcmp:
+            - libzip
+        zipmerge:
+            - libzip
+        ziptool:
+            - libzip
         zlib1g-dev:
             - zlib-dev
     fedora:
@@ -1485,3 +2517,5 @@ packages:
             - xz
         zlib-devel:
             - zlib-dev
+7zip-standalone:
+    - 7zip
