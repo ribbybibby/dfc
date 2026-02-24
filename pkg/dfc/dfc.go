@@ -698,89 +698,10 @@ func convertFromLine(from *FromDetails, stage int, stagesWithRunCommands map[int
 	base := from.Base
 	tag := from.Tag
 
-	// Handle the basename
-	baseFilename := filepath.Base(base)
-
 	// Get the appropriate Chainguard image name using mappings
-	targetImage := baseFilename
-	var convertedTag string
-
-	// Check for exact match first, in specific order
-	// For example, if the mapping is just node, it should match all of the following:
-	// FROM registry-1.docker.io/library/node
-	// FROM docker.io/node
-	// FROM docker.io/library/node
-	// FROM index.docker.io/node
-	// FROM index.docker.io/library/node
-	//
-	// If the mapping is someorg/somerepo, it should match all of the following:
-	// FROM registry-1.docker.io/someorg/somerepo
-	// FROM docker.io/someorg/somerepo
-	// FROM index.docker.io/someorg/somerepo
-	var mappedImage string
-
-	// First check for exact match with full image reference including tag
-	fullImageRef := base
-	if tag != "" {
-		fullImageRef += ":" + tag
-	}
-	if img, ok := opts.ExtraMappings.Images[fullImageRef]; ok {
-		mappedImage = img
-	} else if img, ok := opts.ExtraMappings.Images[base]; ok {
-		mappedImage = img
-	} else if img, ok := opts.ExtraMappings.Images[baseFilename]; ok {
-		mappedImage = img
-	} else {
-		// Generate all possible variants for the base image
-		baseVariants := generateDockerHubVariants(base)
-
-		// Check if any variant matches a key in the mappings
-		for _, variant := range baseVariants {
-			if img, ok := opts.ExtraMappings.Images[variant]; ok {
-				mappedImage = img
-				break
-			}
-		}
-
-		// If still no match, try to normalize the base and check against simple keys
-		if mappedImage == "" {
-			normalizedBase := normalizeImageName(base)
-
-			// Check if the normalized base matches any key
-			if img, ok := opts.ExtraMappings.Images[normalizedBase]; ok {
-				mappedImage = img
-			} else if strings.HasPrefix(normalizedBase, "library/") {
-				// Try removing library/ prefix if it exists
-				simpleBase := strings.TrimPrefix(normalizedBase, "library/")
-				if img, ok := opts.ExtraMappings.Images[simpleBase]; ok {
-					mappedImage = img
-				}
-			}
-		}
-
-		// If still no match, check for glob patterns with asterisks
-		if mappedImage == "" {
-			for pattern, img := range opts.ExtraMappings.Images {
-				if strings.HasSuffix(pattern, "*") {
-					prefix := strings.TrimSuffix(pattern, "*")
-					if strings.HasPrefix(baseFilename, prefix) {
-						mappedImage = img
-						break
-					}
-				}
-			}
-		}
-	}
-
-	// Process the mapped image if found
-	if mappedImage != "" {
-		// Check if the mapped image includes a tag
-		if parts := strings.Split(mappedImage, ":"); len(parts) > 1 {
-			targetImage = parts[0]
-			convertedTag = parts[1]
-		} else {
-			targetImage = mappedImage
-		}
+	targetImage, convertedTag, ok := MapImage(opts.ExtraMappings.Images, base, tag)
+	if !ok {
+		targetImage = filepath.Base(base)
 	}
 
 	// If targetTag is not specified in mapping, calculate it using the existing logic
@@ -847,40 +768,10 @@ func convertArgLine(arg *ArgDetails, lines []*DockerfileLine, stagesWithRunComma
 	// Determine if we need the -dev suffix
 	needsDevSuffix := determineIfArgNeedsDevSuffix(arg.Name, lines, stagesWithRunCommands)
 
-	// First perform the default Chainguard conversion
-	// Calculate default image reference using common approach
-	baseFilename := filepath.Base(base)
-
 	// Get the appropriate Chainguard image name using mappings
-	targetImage := baseFilename
-	var convertedTag string
-
-	// Check for exact match first
-	if mappedImage, ok := opts.ExtraMappings.Images[baseFilename]; ok {
-		// Check if the mapped image includes a tag
-		if parts := strings.Split(mappedImage, ":"); len(parts) > 1 {
-			targetImage = parts[0]
-			convertedTag = parts[1]
-		} else {
-			targetImage = mappedImage
-		}
-	} else {
-		// No exact match, check for glob patterns with asterisks
-		for pattern, mappedImage := range opts.ExtraMappings.Images {
-			if strings.HasSuffix(pattern, "*") {
-				prefix := strings.TrimSuffix(pattern, "*")
-				if strings.HasPrefix(baseFilename, prefix) {
-					// Found a match with a glob pattern
-					if parts := strings.Split(mappedImage, ":"); len(parts) > 1 {
-						targetImage = parts[0]
-						convertedTag = parts[1]
-					} else {
-						targetImage = mappedImage
-					}
-					break
-				}
-			}
-		}
+	targetImage, convertedTag, ok := MapImage(opts.ExtraMappings.Images, base, tag)
+	if !ok {
+		targetImage = filepath.Base(base)
 	}
 
 	// If targetTag is not specified in mapping, calculate it using the existing logic
@@ -1594,8 +1485,8 @@ func parsePackageSpec(manager Manager, packageArg string) (spec PackageSpec) {
 // convertPackage performs a lookup of a given package in the package map and returns a valid apk package parameter.
 func convertPackage(ctx context.Context, spec PackageSpec, distro Distro, packageMap PackageMap, strict bool, warnMissingPackages bool) ([]string, error) {
 	var packages []string
-	if distroMap, exists := packageMap[distro]; exists && distroMap[spec.Name] != nil {
-		for _, pkg := range distroMap[spec.Name] {
+	if mapped := MapPackage(packageMap, distro, spec.Name); mapped != nil {
+		for _, pkg := range mapped {
 			packages = append(packages, createApkPackageSpec(pkg, spec))
 		}
 	} else if strict {

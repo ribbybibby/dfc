@@ -19,6 +19,8 @@ This MCP server provides the following tools:
 
 1. `convert_dockerfile` - Converts a Dockerfile to use Chainguard Images and APKs
 2. `analyze_dockerfile` - Analyzes a Dockerfile and provides information about its structure
+3. `map_image_to_chainguard` - Maps an upstream container image to it Chainguard equivalent
+4. `map_package_to_chainguard` - Maps an OS package in another ecosystem to its equivalents in Chainguard OS
 3. `healthcheck` - Checks if the server is running correctly
 
 ## Directory Structure
@@ -152,6 +154,8 @@ For other MCP clients or custom implementations, you'll need:
 3. Tool names to invoke:
    - `convert_dockerfile`
    - `analyze_dockerfile`
+   - `map_image_to_chainguard`
+   - `map_package_to_chainguard`
    - `healthcheck`
 
 General configuration format for most MCP clients:
@@ -206,6 +210,66 @@ Example request:
   }
 }
 ```
+
+### Map an image to Chainguard
+
+To look up the Chainguard equivalent of an upstream container image, provide the following parameter:
+
+- `image` (required) - The upstream image to map, e.g. `node`, `quay.io/jetstack/cert-manager` or `ghcr.io/stakater/reloader`
+
+Example request:
+
+```json
+{
+  "name": "map_image_to_chainguard",
+  "arguments": {
+    "image": "ghcr.io/stakater/reloader"
+  }
+}
+```
+
+Example response:
+
+```json
+{
+  "images": [
+    { "image": "stakater-reloader" }
+  ]
+}
+```
+
+Returns an empty `images` array if no mapping is found.
+
+### Map a package to Chainguard
+
+To look up the Chainguard APK equivalents of an OS package, provide the following parameters:
+
+- `package` (required) - The package name to map, e.g. `curl` or `libssl-dev`
+- `distro` (required) - The Linux distribution the package is from: `alpine`, `debian`, or `fedora`
+
+Example request:
+
+```json
+{
+  "name": "map_package_to_chainguard",
+  "arguments": {
+    "package": "libssl-dev",
+    "distro": "debian"
+  }
+}
+```
+
+Example response:
+
+```json
+{
+  "packages": [
+    { "package": "libssl3" }
+  ]
+}
+```
+
+Returns an empty `packages` array if no mapping is found.
 
 ## Development
 

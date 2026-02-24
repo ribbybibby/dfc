@@ -133,6 +133,100 @@ func main() {
 		return mcp.NewToolResultText(fmt.Sprintf("Healthcheck passed: %s", string(statusJSON))), nil
 	})
 
+	// Add a tool that maps an upstream image to its Chainguard equivalent
+	mapImageTool := mcp.NewTool("map_image_to_chainguard",
+		mcp.WithDescription("Map an upstream container image to its equivalent in the Chainguard catalog (e.g.'ghcr.io/stakater/reloader' -> 'stakater-reloader')."),
+		mcp.WithString("image",
+			mcp.Required(),
+			mcp.Description("The upstream image to map, e.g. 'node', 'quay.io/jetstack/cert-manager' or 'ghcr.io/stakater/reloader'"),
+		),
+	)
+
+	s.AddTool(mapImageTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+		args := request.Params.Arguments
+
+		img, ok := args["image"].(string)
+		if !ok || img == "" {
+			return mcp.NewToolResultError("image cannot be empty"), nil
+		}
+
+		mappings, err := dfc.GetDefaultMappings(ctx, false)
+		if err != nil {
+			return mcp.NewToolResultError(fmt.Sprintf("getting default mappings: %v", err)), nil
+		}
+
+		type imageMapping struct {
+			Image string `json:"image"`
+		}
+		out := struct {
+			Images []imageMapping `json:"images"`
+		}{}
+		mappedImage, _, ok := dfc.MapImage(mappings.Images, img, "")
+		if ok {
+			logger.Printf("Mapped image %q → %q", img, mappedImage)
+			out.Images = append(out.Images, imageMapping{Image: mappedImage})
+		}
+
+		outJSON, err := json.Marshal(out)
+		if err != nil {
+			return mcp.NewToolResultError(fmt.Sprintf("marshalling result: %v", err)), nil
+		}
+
+		return mcp.NewToolResultText(string(outJSON)), nil
+	})
+
+	// Add a tool that maps an OS package name to its Chainguard equivalent(s)
+	mapPackageTool := mcp.NewTool("map_package_to_chainguard",
+		mcp.WithDescription("Map an OS package name to its Chainguard APK equivalent(s) (e.g. 'libssl-dev' on debian → 'openssl-dev')"),
+		mcp.WithString("package",
+			mcp.Required(),
+			mcp.Description("The package name to map, e.g. 'curl' or 'libssl-dev'"),
+		),
+		mcp.WithString("distro",
+			mcp.Required(),
+			mcp.Description("The Linux distribution the package is from: 'alpine', 'debian', or 'fedora'"),
+		),
+	)
+
+	s.AddTool(mapPackageTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+		args := request.Params.Arguments
+
+		pkg, ok := args["package"].(string)
+		if !ok || pkg == "" {
+			return mcp.NewToolResultError("package cannot be empty"), nil
+		}
+
+		distroStr, ok := args["distro"].(string)
+		if !ok || distroStr == "" {
+			return mcp.NewToolResultError("distro cannot be empty"), nil
+		}
+
+		mappings, err := dfc.GetDefaultMappings(ctx, false)
+		if err != nil {
+			return mcp.NewToolResultError(fmt.Sprintf("failed to get mappings: %v", err)), nil
+		}
+
+		mapped := dfc.MapPackage(mappings.Packages, dfc.Distro(distroStr), pkg)
+
+		logger.Printf("Mapped package %q (%s) → %v", pkg, distroStr, mapped)
+
+		type packageMapping struct {
+			Package string `json:"package"`
+		}
+		out := struct {
+			Packages []packageMapping `json:"packages,omitempty"`
+		}{}
+		for _, pkg := range mapped {
+			out.Packages = append(out.Packages, packageMapping{Package: pkg})
+		}
+		outJSON, err := json.Marshal(out)
+		if err != nil {
+			return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+		}
+
+		return mcp.NewToolResultText(string(outJSON)), nil
+	})
+
 	// Add a tool that analyzes a Dockerfile
 	analyzeDockerfileTool := mcp.NewTool("analyze_dockerfile",
 		mcp.WithDescription("Analyze a Dockerfile and provide information about its structure"),
